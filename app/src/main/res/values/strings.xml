@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WorkManagerDemo</string>
+    <string name="main_notification_channel_name">Notification Worker GADS Demo</string>
+    <string name="gads_work_starting">GADS work has started.</string>
+    <string name="gads_work_successful">GADS work successful.</string>
+    <string name="gads_work_failed">GADS work has failed. Will retry next time.</string>
+</resources>
