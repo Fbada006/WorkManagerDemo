@@ -13,6 +13,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.work.Constraints
+import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.ferdinand.workmanagerdemo.ui.theme.WorkManagerDemoTheme
@@ -38,7 +40,15 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun startNotificationWork() {
-        val notifWorkRequest = OneTimeWorkRequestBuilder<NotificationWork>().build()
+        val constraints = Constraints.Builder()
+            .apply {
+            setRequiredNetworkType(NetworkType.CONNECTED)
+            setRequiresBatteryNotLow(true)
+        }.build()
+
+        val notifWorkRequest = OneTimeWorkRequestBuilder<NotificationWork>()
+            .setConstraints(constraints)
+            .build()
 
         WorkManager
             .getInstance(this)
