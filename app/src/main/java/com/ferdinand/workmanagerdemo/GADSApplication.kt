@@ -21,6 +21,7 @@ class GADSApplication : Application() {
             setRequiresBatteryNotLow(true)
         }.build()
 
+
         val repeatingMovieRefreshRequest =
             PeriodicWorkRequestBuilder<NotificationWork>(
                 15, TimeUnit.MINUTES,
